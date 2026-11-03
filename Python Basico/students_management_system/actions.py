@@ -68,4 +68,17 @@ def register_student(students):
     students.append(student)
     print("Student registered successfully!")
 
-
+def list_students(students):
+    if not students:
+        print("No students registered yet.")
+    else:
+        for student in students:
+            print("================================")
+            print(f"Name: {student['name']}")
+            print(f"Section: {student['section']}")
+            print("______________Grades______________")
+            print(f"Spanish: {student['spanish_grade']}")
+            print(f"English: {student['english_grade']}")
+            print(f"Social Studies: {student['social_studies_grade']}")
+            print(f"Science: {student['science_grade']}")
+            print("================================")
