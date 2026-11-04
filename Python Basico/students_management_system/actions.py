@@ -82,3 +82,18 @@ def list_students(students):
             print(f"Social Studies: {student['social_studies_grade']}")
             print(f"Science: {student['science_grade']}")
             print("================================")
+
+
+def get_average(student):
+        average = (student["spanish_grade"] + student["english_grade"] + student["social_studies_grade"] + student["science_grade"])/4
+        return average
+
+def top_three_students(students):
+    if not students:
+        print("No students registered yet.")
+    else:
+        sort_average_students = sorted(students, key=get_average, reverse=True)
+        top_students = sort_average_students[:3]
+        for student in top_students:
+            print(f"Student: {student['name']} - Section: {student['section']} - Average: {get_average(student)}")
+        

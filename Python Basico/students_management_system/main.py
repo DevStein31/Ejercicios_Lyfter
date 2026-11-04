@@ -1,5 +1,5 @@
 from menu import get_menu_option
-from actions import register_student, list_students
+from actions import register_student, list_students, top_three_students
 
 
 students = []
@@ -16,5 +16,7 @@ if __name__ == "__main__":
                 register_student(students)
             case 2:
                 list_students(students)
+            case 3:
+                top_three_students(students)
             case _:
                 print("This option is not implemented yet.")
