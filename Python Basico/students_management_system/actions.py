@@ -126,3 +126,28 @@ def import_students(students):
         except FileNotFoundError:
             print("CSV file not found.")
 
+def get_failing_grades(student):
+    failed_subjects = []
+        
+    for subject, grade in student.items():
+        if subject.endswith("_grade"):
+            if grade < 60: 
+                failed_subjects.append(f"{subject.replace('_grade', '').replace('_', ' ').title()}: {grade}")
+    return failed_subjects
+
+def failing_grades(students):    
+    for student in students:
+        failing_grades = get_failing_grades(student)
+        
+        if failing_grades:
+            print("================================")
+            print(f"Name: {student['name']}")
+            print(f"Section: {student['section']}")
+            print("Failed subjects:")
+            
+            for grade in failing_grades:
+                print(grade)
+
+            print("================================")
+            
+
