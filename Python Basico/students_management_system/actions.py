@@ -96,4 +96,19 @@ def top_three_students(students):
         top_students = sort_average_students[:3]
         for student in top_students:
             print(f"Student: {student['name']} - Section: {student['section']} - Average: {get_average(student)}")
-        
+
+def overall_average(students):
+    total_average = 0
+    student_count = 0
+
+    if not students:
+        print("No students registered yet.")
+    else:
+        for student in students:
+            average = get_average(student)
+            total_average += average
+            student_count += 1
+        print(f"Average grade of all students: {round(total_average/student_count, 2)}")
+
+
+
