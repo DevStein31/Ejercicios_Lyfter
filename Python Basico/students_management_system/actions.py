@@ -7,7 +7,7 @@ def get_name_student():
         if name.strip() == "" or any(letter.isdigit() for letter in name):
             print("Invalid name. Please enter student's full name.")
         else:
-            name = name.strip()
+            name = " ".join(name.split())
             break
     return name
 
@@ -27,7 +27,7 @@ def get_section_student():
 
 def is_duplicated_student(students, name, section):
         for student in students:
-            if student["name"] == name and student["section"] == section:
+            if student["name"].lower() == name.lower() and student["section"] == section:
                 return True
         return False
 
@@ -100,7 +100,7 @@ def top_three_students(students):
         sort_average_students = sorted(students, key=get_average, reverse=True)
         top_students = sort_average_students[:3]
         for student in top_students:
-            print(f"Student: {student['name']} - Section: {student['section']} - Average: {get_average(student)}")
+            print(f"Student: {student['name']} - Section: {student['section']} - Average: {get_average(student):.2f}")
 
 
 def overall_average(students):
@@ -118,8 +118,11 @@ def overall_average(students):
 
 
 def export_students(students):
-    export_csv_name = input("Please enter the CSV file name: ")
-    create_csv_file(export_csv_name, students)
+    if not students:
+        print("No students registered yet.")
+    else:
+        export_csv_name = input("Please enter the CSV file name: ")
+        create_csv_file(export_csv_name, students)
 
 
 def import_students(students):
@@ -142,20 +145,23 @@ def get_failing_grades(student):
     return failed_subjects
 
 
-def failing_grades(students):    
-    for student in students:
-        failing_grades = get_failing_grades(student)
-        
-        if failing_grades:
-            print("================================")
-            print(f"Name: {student['name']}")
-            print(f"Section: {student['section']}")
-            print("Failed subjects:")
+def failing_grades(students):
+    if not students:
+            print("No students registered yet.")
+    else:   
+        for student in students:
+            failing_grades = get_failing_grades(student)
             
-            for grade in failing_grades:
-                print(grade)
+            if failing_grades:
+                print("================================")
+                print(f"Name: {student['name']}")
+                print(f"Section: {student['section']}")
+                print("Failed subjects:")
+                
+                for grade in failing_grades:
+                    print(grade)
 
-            print("================================")
+                print("================================")
 
 
 def delete_student(students):
