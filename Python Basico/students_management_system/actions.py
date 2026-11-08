@@ -1,3 +1,6 @@
+from data import create_csv_file
+
+
 def get_name_student():
     while True: 
         name = input("Enter the student's full name: ")
@@ -110,5 +113,7 @@ def overall_average(students):
             student_count += 1
         print(f"Average grade of all students: {round(total_average/student_count, 2)}")
 
-
+def export_students(students):
+    export_csv_name = input("Please enter the CSV file name: ")
+    create_csv_file(export_csv_name, students)
 

@@ -1,5 +1,5 @@
 from menu import get_menu_option
-from actions import register_student, list_students, top_three_students, overall_average
+from actions import register_student, list_students, top_three_students, overall_average, export_students
 
 
 students = []
@@ -20,5 +20,7 @@ if __name__ == "__main__":
                 top_three_students(students)
             case 4:
                 overall_average(students)
+            case 5:
+                export_students(students)
             case _:
                 print("This option is not implemented yet.")
