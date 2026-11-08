@@ -133,6 +133,8 @@ def import_students(students):
             break
         except FileNotFoundError:
             print("CSV file not found.")
+        except ValueError as error:
+            print(f"Invalid CSV file: {error}")
 
 
 def get_failing_grades(student):
