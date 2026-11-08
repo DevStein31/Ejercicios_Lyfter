@@ -1,4 +1,4 @@
-from data import create_csv_file
+from data import create_csv_file, import_csv_file
 
 
 def get_name_student():
@@ -116,4 +116,13 @@ def overall_average(students):
 def export_students(students):
     export_csv_name = input("Please enter the CSV file name: ")
     create_csv_file(export_csv_name, students)
+
+def import_students(students):
+    while True:
+        try:
+            import_csv_name = input("Please enter the CSV file name: ")
+            import_csv_file(import_csv_name, students)
+            break
+        except FileNotFoundError:
+            print("CSV file not found.")
 
