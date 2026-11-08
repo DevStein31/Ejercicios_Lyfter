@@ -19,9 +19,9 @@ def get_section_student():
             section = section.upper()
             break
         else:
-            print("""Invalid section. Please enter a valid section.
-            It must be 2 numbers and 1 letter.
-            For example: 10A, 05B, 12S""")
+            print("Invalid section. Please enter a valid section")
+            print("It must be 2 numbers and 1 letter.")
+            print("For example: 10A, 05B, 12S")
     return section
 
 
@@ -71,6 +71,7 @@ def register_student(students):
     students.append(student)
     print("Student registered successfully!")
 
+
 def list_students(students):
     if not students:
         print("No students registered yet.")
@@ -91,6 +92,7 @@ def get_average(student):
         average = (student["spanish_grade"] + student["english_grade"] + student["social_studies_grade"] + student["science_grade"])/4
         return average
 
+
 def top_three_students(students):
     if not students:
         print("No students registered yet.")
@@ -99,6 +101,7 @@ def top_three_students(students):
         top_students = sort_average_students[:3]
         for student in top_students:
             print(f"Student: {student['name']} - Section: {student['section']} - Average: {get_average(student)}")
+
 
 def overall_average(students):
     total_average = 0
@@ -113,9 +116,11 @@ def overall_average(students):
             student_count += 1
         print(f"Average grade of all students: {round(total_average/student_count, 2)}")
 
+
 def export_students(students):
     export_csv_name = input("Please enter the CSV file name: ")
     create_csv_file(export_csv_name, students)
+
 
 def import_students(students):
     while True:
@@ -126,6 +131,7 @@ def import_students(students):
         except FileNotFoundError:
             print("CSV file not found.")
 
+
 def get_failing_grades(student):
     failed_subjects = []
         
@@ -134,6 +140,7 @@ def get_failing_grades(student):
             if grade < 60: 
                 failed_subjects.append(f"{subject.replace('_grade', '').replace('_', ' ').title()}: {grade}")
     return failed_subjects
+
 
 def failing_grades(students):    
     for student in students:
@@ -149,5 +156,20 @@ def failing_grades(students):
                 print(grade)
 
             print("================================")
-            
+
+
+def delete_student(students):
+    if not students:
+        print("No students registered yet.")
+    else:
+        student_name = get_name_student()
+        student_section = get_section_student()
+
+        for student in students:
+            if student["name"].lower() == student_name.lower() and student["section"] ==student_section:
+                students.remove(student)
+                print("Student deleted successfully.")
+                break
+        else:
+            print("Student not found!")
 
