@@ -163,8 +163,12 @@ def delete_student(students):
 
         for student in students:
             if student["name"].lower() == student_name.lower() and student["section"] ==student_section:
-                students.remove(student)
-                print("Student deleted successfully.")
+                confirmation = input("Are you sure you want to delete this student? (yes/no): ").strip().lower()
+                if confirmation == "yes":
+                    students.remove(student)
+                    print("Student deleted successfully.")
+                else:
+                    print("Student deletion cancelled.")
                 break
         else:
             print("Student not found!")
