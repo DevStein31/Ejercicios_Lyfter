@@ -46,30 +46,41 @@ def get_grade(subject):
 
 def register_student(students):
     while True:
-        name = get_name_student()
-        section = get_section_student()
-        duplicate_found = is_duplicated_student(students, name, section)
-        
-        if duplicate_found:
-            print ("This student is already registered. Please enter a different student.")
-        else:
-            break
+        try:
+            students_count = int(input("How many students do you want to register?"))
+            if students_count <= 0:
+                print("The number of students must be greater than 0.")
+            else:
+                break
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+    
+    for _ in range(students_count):
+        while True:
+            name = get_name_student()
+            section = get_section_student()
+            duplicate_found = is_duplicated_student(students, name, section)
+            if duplicate_found:
+                print ("This student is already registered. Please enter a different student.")
+            else:
+                break
 
-    spanish_grade = get_grade("Spanish")
-    english_grade = get_grade("English")
-    social_studies_grade = get_grade("Social Studies")
-    science_grade = get_grade("Science")
+        spanish_grade = get_grade("Spanish")
+        english_grade = get_grade("English")
+        social_studies_grade = get_grade("Social Studies")
+        science_grade = get_grade("Science")
 
-    student = {}
-    student["name"] = name
-    student["section"] = section
-    student["spanish_grade"] = spanish_grade
-    student["english_grade"] = english_grade
-    student["social_studies_grade"] = social_studies_grade
-    student["science_grade"] = science_grade
+        student = {}
+        student["name"] = name
+        student["section"] = section
+        student["spanish_grade"] = spanish_grade
+        student["english_grade"] = english_grade
+        student["social_studies_grade"] = social_studies_grade
+        student["science_grade"] = science_grade
 
-    students.append(student)
-    print("Student registered successfully!")
+        students.append(student)
+        print("Student registered successfully!")
+        print("")
 
 
 def list_students(students):
