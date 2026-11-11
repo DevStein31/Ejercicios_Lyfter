@@ -1,6 +1,3 @@
-from data import create_csv_file, import_csv_file
-
-
 def get_name_student():
     while True: 
         name = input("Enter the student's full name: ")
@@ -47,7 +44,7 @@ def get_grade(subject):
 def register_student(students):
     while True:
         try:
-            students_count = int(input("How many students do you want to register?"))
+            students_count = int(input("How many students do you want to register? "))
             if students_count <= 0:
                 print("The number of students must be greater than 0.")
             else:
@@ -126,26 +123,6 @@ def overall_average(students):
             total_average += average
             student_count += 1
         print(f"Average grade of all students: {round(total_average/student_count, 2)}")
-
-
-def export_students(students):
-    if not students:
-        print("No students registered yet.")
-    else:
-        export_csv_name = input("Please enter the CSV file name: ")
-        create_csv_file(export_csv_name, students)
-
-
-def import_students(students):
-    while True:
-        try:
-            import_csv_name = input("Please enter the CSV file name: ")
-            import_csv_file(import_csv_name, students)
-            break
-        except FileNotFoundError:
-            print("CSV file not found.")
-        except ValueError as error:
-            print(f"Invalid CSV file: {error}")
 
 
 def get_failing_grades(student):

@@ -1,4 +1,6 @@
-from actions import register_student, list_students, top_three_students, overall_average, export_students, import_students, failing_grades, delete_student
+from actions import register_student, list_students, top_three_students, overall_average, failing_grades, delete_student
+from data import export_students, import_students
+
 
 def show_menu():
     print("""===== STUDENT MANAGEMENT SYSTEM =====

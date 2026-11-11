@@ -15,6 +15,12 @@ def create_csv_file(output_file, students):
             writer.writeheader()
             writer.writerows(students)
 
+
+def export_students(students):
+    export_csv_name = input("Please enter the CSV file name: ")
+    create_csv_file(export_csv_name, students)
+
+            
 def import_csv_file(input_file, students):
     project_folder = Path(__file__).parent
     csv_path = project_folder / input_file
@@ -54,3 +60,15 @@ def import_csv_file(input_file, students):
             imported_students.append(student)
 
         students.extend(imported_students)
+
+
+def import_students(students):
+    while True:
+        try:
+            import_csv_name = input("Please enter the CSV file name: ")
+            import_csv_file(import_csv_name, students)
+            break
+        except FileNotFoundError:
+            print("CSV file not found.")
+        except ValueError as error:
+            print(f"Invalid CSV file: {error}")
