@@ -68,7 +68,9 @@ def import_csv_file(input_file, students):
 def import_students(students):
     while True:
         try:
-            import_csv_name = input("Please enter the CSV file name: ")
+            import_csv_name = input("Please enter the CSV file name: ").strip()
+            if not import_csv_name:
+                return
             import_csv_file(import_csv_name, students)
             break
         except FileNotFoundError:
