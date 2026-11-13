@@ -18,8 +18,15 @@ def create_csv_file(output_file, students):
 
 
 def export_students(students):
+    if not students:
+        print("No students registered yet.")
+        return
     export_csv_name = input("Please enter the CSV file name: ")
+    if not export_csv_name.lower().endswith(".csv"):
+        export_csv_name += ".csv" 
+
     create_csv_file(export_csv_name, students)
+    print("Students exported successfully.")
 
             
 def import_csv_file(input_file, students):
@@ -72,6 +79,7 @@ def import_students(students):
             if not import_csv_name:
                 return
             import_csv_file(import_csv_name, students)
+            print("Students imported successfully.")
             break
         except FileNotFoundError:
             print("CSV file not found.")
