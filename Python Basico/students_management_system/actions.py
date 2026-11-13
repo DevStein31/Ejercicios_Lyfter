@@ -138,7 +138,8 @@ def get_failing_grades(student):
 def failing_grades(students):
     if not students:
         print("No students registered yet.")
-    else:   
+    else:
+        has_failing_students = False
         for student in students:
             failed_subjects = get_failing_grades(student)
             
@@ -147,11 +148,14 @@ def failing_grades(students):
                 print(f"Name: {student['name']}")
                 print(f"Section: {student['section']}")
                 print("Failed subjects:")
+                has_failing_students = True
                 
                 for grade in failed_subjects:
                     print(grade)
 
                 print("================================")
+        if not has_failing_students:
+            print("No failing students found")
 
 
 def delete_student(students):
