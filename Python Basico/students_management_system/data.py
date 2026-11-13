@@ -1,4 +1,5 @@
 import csv
+from actions import is_duplicated_student
 from pathlib import Path
 
 
@@ -56,8 +57,10 @@ def import_csv_file(input_file, students):
 
             if not all(0 <= grade <= 100 for grade in grades):
                 raise ValueError("Grades must be between 0 and 100.")
+
             
-            imported_students.append(student)
+            if not is_duplicated_student(students + imported_students, student["name"], student["section"]):
+                imported_students.append(student)
 
         students.extend(imported_students)
 

@@ -23,10 +23,10 @@ def get_section_student():
 
 
 def is_duplicated_student(students, name, section):
-        for student in students:
-            if student["name"].lower() == name.lower() and student["section"] == section:
-                return True
-        return False
+    for student in students:
+        if student["name"].lower() == name.lower() and student["section"] == section:
+            return True
+    return False
 
 
 def get_grade(subject):
@@ -97,8 +97,8 @@ def list_students(students):
 
 
 def get_average(student):
-        average = (student["spanish_grade"] + student["english_grade"] + student["social_studies_grade"] + student["science_grade"])/4
-        return average
+    average = (student["spanish_grade"] + student["english_grade"] + student["social_studies_grade"] + student["science_grade"])/4
+    return average
 
 
 def top_three_students(students):
